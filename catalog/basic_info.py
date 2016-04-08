@@ -31,8 +31,10 @@ session.commit()
 
 human = Race(name='Human',
              patron='Humtar',
-             description='The last creation of the Four, humans are the most common of the civilized races. Humtar, \
-             who was originally human, appreciated their versatility so became their patron.',
+             description='While most of the Five Pillars of Civilization changed their mortal followers to better suit \
+                         their interests, Humtar did not. His humans are the same versatile creatures that they were \
+                         at the dawn of the Second Age, and they are the only creatures with the original divine spark \
+                         that allows them to weave spells.',
              skills='Weaving')
 
 session.add(human)
