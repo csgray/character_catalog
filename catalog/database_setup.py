@@ -13,11 +13,19 @@ class User(Base):
     email = Column(String)
 
 
+class Deity(Base):
+    __tablename__ = 'deities'
+
+    name = Column(String, primary_key=True)
+    title = Column(String)
+    description = Column(String)
+
+
 class Race(Base):
     __tablename__ = 'races'
 
     name = Column(String, primary_key=True)
-    patron = Column(String)
+    patron = Column(String, ForeignKey('deities.name'))
     description = Column(String)
     skills = Column(String, ForeignKey('skills.name'))
 
@@ -36,5 +44,15 @@ class Skill(Base):
     name = Column(String, primary_key=True)
     description = Column(String)
     time = Column(Integer)
+
+
+class Character(Base):
+    __tablename__ = 'characters'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    race = Column(String, ForeignKey('races.name'))
+    guild = Column(String, ForeignKey('guilds.name'))
+    skills = Column(String, ForeignKey('skills.name'))
 
 Base.metadata.create_all(engine)
