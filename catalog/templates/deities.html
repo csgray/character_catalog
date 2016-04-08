@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Deities Listt</title>
+</head>
+<body>
+    <h1>Deities</h1>
+        <ul>
+        {% for deity in deities %}
+            <li>{{ deity.name }}, {{ deity.title }}</li>
+        {% endfor %}
+        </ul>
+</body>
+<footer>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</footer>
+</html>

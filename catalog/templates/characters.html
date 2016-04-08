@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Character List</title>
+</head>
+<body>
+    <h1>Characters</h1>
+        <ul>
+        {% for character in characters %}
+            <li>{{ character.name }}</li>
+        {% endfor %}
+        </ul>
+</body>
+<footer>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</footer>
+</html>
