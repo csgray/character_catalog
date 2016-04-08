@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Races List</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Character List{% endblock %}
+
+{% block content %}
     <h1>Races</h1>
         <ul>
         {% for race in races %}
             <li>{{ race.name }}</li>
         {% endfor %}
         </ul>
-</body>
-<footer>
-    <a href="{{ url_for('home') }}">Back to Home</a>
-</footer>
-</html>
+{% endblock %}

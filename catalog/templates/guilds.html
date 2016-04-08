@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Guild List</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Guilds List{% endblock %}
+
+{% block content %}
     <h1>Guilds</h1>
         <ul>
         {% for guild in guilds %}
             <li>{{ guild.name }}</li>
         {% endfor %}
         </ul>
-</body>
-<footer>
-    <a href="{{ url_for('home') }}">Back to Home</a>
-</footer>
-</html>
+{% endblock %}

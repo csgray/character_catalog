@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Character Catalog</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Character Catalog{% endblock %}
+
+{% block content %}
     <h1>Characters</h1>
         <a href="{{ url_for('characters') }}">List of Characters</a>
     <h1>Setting Information</h1>
         <a href="{{ url_for('deities') }}">Deities</a><br>
         <a href="{{ url_for('races') }}">Races</a><br>
         <a href="{{ url_for('guilds') }}">Guilds</a><br>
-        <a href="{{ url_for('skills') }}">Skills</a>
-</body>
-</html>
+        <a href="{{ url_for('skills') }}">Skills</a><br>
+        <br>
+{% endblock %}
+
+{% block navigation %}
+    {# No navigation on home page #}
+{% endblock %}

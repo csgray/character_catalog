@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Character Catalog{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    You really ought to put some content here.
+    {% endblock %}
+
+    <nav>
+        {% block navigation %}
+            <a href="{{ url_for('home') }}">Back to Home</a>
+        {% endblock %}
+    </nav>
+</body>
+</html>
