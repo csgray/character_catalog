@@ -21,6 +21,24 @@ def characters():
     return render_template('characters.html', characters=c)
 
 
+@app.route('/characters/<name>/')
+def character_details(name):
+    c = session.query(Character).filter_by(name=name).one()
+    return render_template('character_details.html', character=c)
+
+
+@app.route('/characters/<name>/edit')
+def character_edit(name):
+    c = session.query(Character).filter_by(name=name).one()
+    return render_template('character_edit.html', character=c)
+
+
+@app.route('/characters/<name>/delete')
+def character_delete(name):
+    c = session.query(Character).filter_by(name=name).one()
+    return render_template('character_delete.html', character=c)
+
+
 @app.route('/deities/')
 def deities():
     d = session.query(Deity).all()

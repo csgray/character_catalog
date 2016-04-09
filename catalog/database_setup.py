@@ -49,8 +49,7 @@ class Skill(Base):
 class Character(Base):
     __tablename__ = 'characters'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String, primary_key=True)
     race = Column(String, ForeignKey('races.name'))
     guild = Column(String, ForeignKey('guilds.name'))
     skills = Column(String, ForeignKey('skills.name'))

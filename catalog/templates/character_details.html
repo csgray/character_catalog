@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ character.name }}: Details{% endblock %}
+
+{% block content %}
+    <h1>Character Details: </h1>
+    Name: {{ character.name }}<br>
+    Race: {{ character.race }}<br>
+    Guild: {{ character.guild }}<br>
+    Skills: {{ character.skills }}<br>
+    <br>
+{% endblock %}
+
+{% block navigation %}
+    <a href="{{ url_for('character_edit', name=character.name) }}">Edit</a><br>
+    <a href="{{ url_for('character_delete', name=character.name) }}">Delete</a><br>
+    <a href="{{ url_for('characters') }}">Back to Characters</a><br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}
