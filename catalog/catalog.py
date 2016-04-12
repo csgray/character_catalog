@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, redirect, url_for
 from database_setup import Character, Deity, Guild, Race, Skill
 
 app = Flask(__name__)
@@ -21,19 +21,33 @@ def characters():
     return render_template('characters.html', characters=c)
 
 
+@app.route('/characters/new/', methods=['GET', 'POST'])
+def character_new():
+    if request.method == 'POST':
+        character = Character(name=request.form['name'],
+                              race=request.form['race'],
+                              guild=request.form['guild'],
+                              skills=request.form['skills'])
+        session.add(character)
+        session.commit()
+        return redirect(url_for('characters'))
+    else:
+        return render_template('character_new.html')
+
+
 @app.route('/characters/<name>/')
 def character_details(name):
     c = session.query(Character).filter_by(name=name).one()
     return render_template('character_details.html', character=c)
 
 
-@app.route('/characters/<name>/edit')
+@app.route('/characters/<name>/edit/')
 def character_edit(name):
     c = session.query(Character).filter_by(name=name).one()
     return render_template('character_edit.html', character=c)
 
 
-@app.route('/characters/<name>/delete')
+@app.route('/characters/<name>/delete/')
 def character_delete(name):
     c = session.query(Character).filter_by(name=name).one()
     return render_template('character_delete.html', character=c)

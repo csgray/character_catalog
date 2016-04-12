@@ -11,3 +11,8 @@
         {% endfor %}
         </ul>
 {% endblock %}}
+
+{% block navigation %}
+    <a href="{{ url_for('character_new') }}">Create a New Character</a><br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}
