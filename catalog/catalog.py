@@ -23,6 +23,10 @@ def characters():
 
 @app.route('/characters/new/', methods=['GET', 'POST'])
 def character_new():
+    d = session.query(Deity).all()
+    r = session.query(Race).all()
+    g = session.query(Guild).all()
+    s = session.query(Skill).all()
     if request.method == 'POST':
         character = Character(name=request.form['name'],
                               race=request.form['race'],
@@ -32,7 +36,7 @@ def character_new():
         session.commit()
         return redirect(url_for('characters'))
     else:
-        return render_template('character_new.html')
+        return render_template('character_new.html', deities=d, races=r, guilds=g, skills=s)
 
 
 @app.route('/characters/<name>/')

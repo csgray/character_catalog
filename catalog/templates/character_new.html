@@ -5,12 +5,23 @@
     <h1>Create a New Character: </h1>
     <form action="{{ url_for('character_new') }}" method="post">
     Name: <input type="text" name="name"><br>
-    Race: <input type="radio" name="race" value="Human" checked>Human<br>
+    Race:<br>
+        {% for race in races %}
+        <input type="radio" name="race" value="{{ race.name }}" checked>{{ race.name }}<br>
+        {% endfor %}
+    Patron Deity:<br>
+        <input type="radio" name="deity" value="" checked>None<br>
+        {% for deity in deities %}
+        <input type="radio" name="deity" value="{{ deity.name }}">{{ deity.name }}, {{ deity.title }}: {{ deity.description }}<br>
+        {% endfor%}
     Guilds:<br>
-        <input type="checkbox" name="guild" value="City Guards">City Guards<br>
+        {% for guild in guilds %}
+        <input type="checkbox" name="guilds" value="{{ guild.name }}">{{ guild.name }}: {{ guild.description }}<br>
+        {% endfor %}
     Skills:<br>
-        <input type="checkbox" name="skills" value="Weaving">Weaving<br>
-        <input type="checkbox" name="skills" value="Defend">Defend<br>
+        {% for skill in skills %}
+        <input type="checkbox" name="skills" value="{{ skill.name }}">{{ skill.name }}: {{ skill.description }}<br>
+        {% endfor %}
     <input type="submit" value="Submit">
     </form>
     <br>
